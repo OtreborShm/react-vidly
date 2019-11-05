@@ -4,6 +4,7 @@ import _ from "lodash";
 class TableBody extends Component {
   renderCell = (item, column) => {
     if (column.content) return column.content(item);
+
     return _.get(item, column.path);
   };
 
@@ -16,7 +17,7 @@ class TableBody extends Component {
     return (
       <tbody>
         {data.map(item => (
-          <tr key={item._id}>
+          <tr key={item.Clave}>
             {columns.map(column => (
               <td key={this.createKey(item, column)}>
                 {this.renderCell(item, column)}
@@ -29,4 +30,4 @@ class TableBody extends Component {
   }
 }
 
-export default TableBody; 
+export default TableBody;
