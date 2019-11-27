@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import "./css/login.css";
 import { Route, Redirect, Switch } from "react-router-dom";
 import Customers from "./components/customers";
 import NotFound from "./components/notFound";

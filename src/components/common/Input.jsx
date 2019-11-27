@@ -1,19 +1,22 @@
 import React from "react";
 
-const Input = ({ name, label, value, error, onChange, type }) => {
+const Input = ({ name, icon, value, error, onChange, type, placeholder }) => {
   return (
-    <div className="form-group">
-      <label htmlFor={name}>{label}</label>
+    <div className="wrap-input100 validate-input">
       <input
-        autoFocus
         value={value}
         onChange={onChange}
         id={name}
         name={name}
         type={type}
-        className="form-control"
+        placeholder={placeholder}
+        className="input100"
       />
-      {error && <div className="alert alert-danger">{error}</div>}
+      <span class="focus-input100"></span>
+      <span class="symbol-input100">
+        <i class={icon} aria-hidden="true"></i>
+      </span>
+      {error && <p Style="color:red">{error}</p>}
     </div>
   );
 };

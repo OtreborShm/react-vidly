@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import Input from "./common/Input";
 import Joi from "joi-browser";
+import Tilt from "react-tilt";
+import "../css/login.css";
+import "../css/utils.css";
+import logo from "../utils/simi-logo.png";
 
 class Login extends Component {
   state = {
@@ -54,27 +58,62 @@ class Login extends Component {
   render() {
     const { account, errors } = this.state;
     return (
-      <div>
-        <h1>Login</h1>
-        <form onSubmit={this.handleOnSubmit}>
-          <Input
-            name="username"
-            label="Username"
-            value={account.username}
-            onChange={this.handleChange}
-            type="text"
-            error={errors.username}
-          />
-          <Input
-            name="password"
-            label="Password"
-            value={account.password}
-            onChange={this.handleChange}
-            type="password"
-            error={errors.password}
-          />
-          <button className="btn btn-primary">Login</button>
-        </form>
+      <div className="limiter">
+        <div className="">
+          <div className="wrap-login100">
+            <Tilt
+              className="Tilt login100-pic"
+              options={{ scale: 1.5, max: 90 }}
+            >
+              <img src={logo} alt="simi" draggable="false" />
+            </Tilt>
+            <form
+              className="login100-form validate-form"
+              onSubmit={this.handleOnSubmit}
+            >
+              <span class="login100-form-title">Productos POP</span>
+              <Input
+                name="username"
+                icon="fa fa-user"
+                value={account.username}
+                onChange={this.handleChange}
+                type="text"
+                placeholder="Username"
+                error={errors.username}
+              />
+              <Input
+                name="password"
+                icon="fa fa-lock"
+                value={account.password}
+                onChange={this.handleChange}
+                type="password"
+                placeholder="Password"
+                error={errors.password}
+              />
+
+              <div class="container-login100-form-btn">
+                <button class="login100-form-btn">Login</button>
+              </div>
+
+              <div class="text-center p-t-12">
+                <span class="txt1">Forgot </span>
+                <a class="txt2" href="/">
+                  Username / Password?
+                </a>
+              </div>
+
+              <div class="text-center p-t-136">
+                <a class="txt2" href="/">
+                  Create your Account
+                  <i
+                    class="fa fa-long-arrow-right m-l-5"
+                    aria-hidden="true"
+                  ></i>
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     );
   }
