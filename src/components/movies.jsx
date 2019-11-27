@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
 import { getGenres } from "../services/fakeGenreService";
+import { paginate } from "../utils/paginate";
+import { NavLink } from "react-router-dom";
 import MoviesTable from "./moviesTable";
 import Pagination from "./common/pagination";
 import ListGroup from "./common/listGroup";
-import { paginate } from "../utils/paginate";
 import _ from "lodash";
 
 class Movies extends Component {
@@ -88,6 +89,10 @@ class Movies extends Component {
           />
         </div>
         <div className="col">
+          <NavLink className="btn btn-primary m-2" to="/new">
+            New Movie
+          </NavLink>
+
           <p>Showing {totalCount} from the database</p>
           <MoviesTable
             movies={movies}

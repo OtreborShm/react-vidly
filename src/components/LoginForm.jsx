@@ -1,62 +1,33 @@
-import React, { Component } from "react";
-import Input from "./common/Input";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import Joi from "joi-browser";
 import Tilt from "react-tilt";
+import Form from "./common/form";
+import logo from "../utils/simi-logo.png";
 import "../css/login.css";
 import "../css/utils.css";
-import logo from "../utils/simi-logo.png";
 
-class Login extends Component {
+class Login extends Form {
   state = {
-    account: { username: "", password: "" },
+    data: { username: "", password: "" },
     errors: {}
   };
 
   schema = {
-    username: Joi.string().required(),
-    password: Joi.string().required()
+    username: Joi.string()
+      .required()
+      .label("Username"),
+    password: Joi.string()
+      .required()
+      .label("Password")
   };
 
-  validate = () => {
-    const result = Joi.validate(this.state.account, this.schema, {
-      abortEarly: false
-    });
-
-    console.log(result);
-
-    const errors = {};
-
-    const { account } = this.state;
-    if (account.username.trim() === "")
-      errors.username = "Username is required.";
-    if (account.password.trim() === "")
-      errors.password = "Password is required.";
-
-    return Object.keys(errors).length === 0 ? null : errors;
-  };
-
-  handleOnSubmit = e => {
-    e.preventDefault();
-
-    const errors = this.validate();
-    console.log(errors);
-
-    this.setState({ errors: errors || {} });
-
-    if (errors) return;
-
+  doSubmit = () => {
     // Call the server
     console.log("Submitted");
   };
 
-  handleChange = ({ currentTarget: input }) => {
-    const account = { ...this.state.account };
-    account[input.name] = input.value;
-    this.setState({ account });
-  };
-
   render() {
-    const { account, errors } = this.state;
     return (
       <div className="limiter">
         <div className="">
@@ -71,45 +42,27 @@ class Login extends Component {
               className="login100-form validate-form"
               onSubmit={this.handleOnSubmit}
             >
-              <span class="login100-form-title">Productos POP</span>
-              <Input
-                name="username"
-                icon="fa fa-user"
-                value={account.username}
-                onChange={this.handleChange}
-                type="text"
-                placeholder="Username"
-                error={errors.username}
-              />
-              <Input
-                name="password"
-                icon="fa fa-lock"
-                value={account.password}
-                onChange={this.handleChange}
-                type="password"
-                placeholder="Password"
-                error={errors.password}
-              />
+              <span className="login100-form-title">Productos POP</span>
 
-              <div class="container-login100-form-btn">
-                <button class="login100-form-btn">Login</button>
-              </div>
+              {this.renderInput("username", "fa fa-user", "Username")}
+              {this.renderInput("password", "fa fa-lock", "Password", "password")}
+              {this.renderButton("Login")}
 
-              <div class="text-center p-t-12">
-                <span class="txt1">Forgot </span>
-                <a class="txt2" href="/">
+              <div className="text-center p-t-12">
+                <span className="txt1">Forgot </span>
+                <NavLink className="txt2" to="/">
                   Username / Password?
-                </a>
+                </NavLink>
               </div>
 
-              <div class="text-center p-t-136">
-                <a class="txt2" href="/">
-                  Create your Account
+              <div className="text-center p-t-136">
+                <NavLink className="txt2" to="/">
+                  Create your data
                   <i
-                    class="fa fa-long-arrow-right m-l-5"
+                    className="fa fa-long-arrow-right m-l-5"
                     aria-hidden="true"
                   ></i>
-                </a>
+                </NavLink>
               </div>
             </form>
           </div>

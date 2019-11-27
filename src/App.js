@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import "./css/login.css";
 import { Route, Redirect, Switch } from "react-router-dom";
 import Customers from "./components/customers";
 import NotFound from "./components/notFound";
@@ -9,6 +8,7 @@ import NavBar from "./components/navBar";
 import MovieForm from "./components/movieForm";
 import Movies from "./components/movies";
 import Login from "./components/LoginForm";
+import RegisterForm from './components/RegisterForm';
 
 function App() {
   return (
@@ -16,8 +16,10 @@ function App() {
       <NavBar />
       <main className="container">
         <Switch>
+          <Route path="/register" component={RegisterForm} />
           <Route path="/login" component={Login} />
-          <Route path="/movieForm/:id" component={MovieForm} />
+          <Route path="/new" component={MovieForm} />
+          <Route path="/movie/:id" component={MovieForm} />
           <Route path="/movies" component={Movies}></Route>
           <Route path="/customers" component={Customers}></Route>
           <Route path="/rentals" component={Rentals}></Route>

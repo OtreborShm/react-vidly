@@ -1,22 +1,14 @@
 import React from "react";
 
-const Input = ({ name, icon, value, error, onChange, type, placeholder }) => {
+const Input = ({ name, icon, error, ...rest }) => {
   return (
     <div className="wrap-input100 validate-input">
-      <input
-        value={value}
-        onChange={onChange}
-        id={name}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        className="input100"
-      />
-      <span class="focus-input100"></span>
-      <span class="symbol-input100">
-        <i class={icon} aria-hidden="true"></i>
+      <input {...rest} name={name} id={name} className="input100" />
+      <span className="focus-input100"></span>
+      <span className="symbol-input100">
+        <i className={icon} aria-hidden="true"></i>
       </span>
-      {error && <p Style="color:red">{error}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 };
