@@ -4,6 +4,7 @@ import Input from "./input";
 import Select from "./select";
 import "../../css/login.css";
 import "../../css/utils.css";
+import Button from "./button";
 
 class Form extends Component {
   validate = () => {
@@ -51,13 +52,7 @@ class Form extends Component {
   };
 
   renderButton(label) {
-    return (
-      <div className="container-login100-form-btn">
-        <button disabled={this.validate()} className="login100-form-btn">
-          {label}
-        </button>
-      </div>
-    );
+    return <Button label={label} validation={this.validate()} />;
   }
 
   renderInput(name, icon, label, type = "text") {
