@@ -34,8 +34,7 @@ class Login extends Form {
           <div className="wrap-login100">
             <Tilt
               className="Tilt login100-pic"
-              options={{ scale: 1.5, max: 90 }}
-            >
+              options={{ scale: 1, max: 45 }}            >
               <img src={logo} alt="simi" draggable="false" />
             </Tilt>
             <form
@@ -57,7 +56,7 @@ class Login extends Form {
 
               <div className="text-center p-t-136">
                 <NavLink className="txt2" to="/">
-                  Create your data
+                  Create your account
                   <i
                     className="fa fa-long-arrow-right m-l-5"
                     aria-hidden="true"
